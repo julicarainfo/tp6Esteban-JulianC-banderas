@@ -1,5 +1,19 @@
 .img
 {
     width: 25%;
-    height: auto;
+    height: 25%;
 }
+.container{
+    text-align: center;
+}
+body{
+    background-color: lemonchiffon;
+}
+
+.colorPuntosRojos{
+  color: red;
+}
+
+.colorPuntosVerdes{
+    color: rgb(6, 204, 6);
+  }

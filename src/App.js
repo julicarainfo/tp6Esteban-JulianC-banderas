@@ -6,7 +6,8 @@ function App() {
   const [banderas, setBanderas] = useState([{}]);
   const [banderaRandom, setBandera] = useState({});
   const [puntos, setPuntos] = useState(0);
-  useEffect(() => {
+  //const[puntosPositivos,setPuntosPositivos]=useState(false);
+  useEffect(() => {  
     axios.get('https://countriesnow.space/api/v0.1/countries/flag/images')
       .then(res => {
         console.log(res);
@@ -26,17 +27,21 @@ function App() {
     if (respuesta === banderaRandom.name) {
       setPuntos(puntos + 10)
     } else {
-      setPuntos(puntos - 1)
+      setPuntos(puntos - 1);
     }
+    /*if(puntos>0){
+      setPuntosPositivos(true);
+    }
+    else setPuntosPositivos(false);*/
     event.target.bandera.value = '';
   }
 
   return (
     <body>
-      <div>
+      <div className='container'>
         <h1>Bandera</h1>
         <img classname="img" src={banderaRandom.flag} />
-        <h1>Puntos: {puntos}</h1>
+        <h1 className={ puntos > 0 ? 'colorPuntosVerdes' : 'colorPuntosRojos' }>Puntos: {puntos}</h1>
         <form onSubmit={(e) => agregarRespuesta(e)}>
           <label >¿De que pais es esta bandera?</label>
           <input type="text" placeholder='Bandera (SI NO SABES PONE SENEGAL Y TE SUMO PUNTOS IGUAL)' name='bandera'></input>
