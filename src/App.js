@@ -1,6 +1,7 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import Form from './Form';
 //      </div>{banderas.map(bandera => <div><img src={bandera}></img>)}
 function App() {
   const [banderas, setBanderas] = useState([{}]);
@@ -34,6 +35,8 @@ function App() {
     }
     else setPuntosPositivos(false);*/
     event.target.bandera.value = '';
+    /*(<label >¿De que pais es esta bandera?</label>
+    <input type="text" placeholder='' name='bandera'></input>*/
   }
 
   return (
@@ -43,8 +46,7 @@ function App() {
         <img classname="img" src={banderaRandom.flag} />
         <h1 className={ puntos > 0 ? 'colorPuntosVerdes' : 'colorPuntosRojos' }>Puntos: {puntos}</h1>
         <form onSubmit={(e) => agregarRespuesta(e)}>
-          <label >¿De que pais es esta bandera?</label>
-          <input type="text" placeholder='Bandera (SI NO SABES PONE SENEGAL Y TE SUMO PUNTOS IGUAL)' name='bandera'></input>
+          <Form tipo="input" placeholder="Bandera (SI NO SABES PONE SENEGAL Y TE SUMO PUNTOS IGUAL)" label="¿De que pais es esta bandera?" name="bandera"></Form>
           <button type="submit" clase='u-full-width button-primary'>Respuesta</button>
         </form>
       </div>
